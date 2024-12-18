@@ -79,10 +79,10 @@ class Triangle
         }
 
         // Semi-perimeter
-        $semiPerimeter = ($this->sideA + $this->sideB + $this->sideC) / 2;
+        $semiPerimeter = ($this->a + $this->b + $this->c) / 2;
 
         // Area calculation using Heron's formula
-        return sqrt($semiPerimeter * ($semiPerimeter - $this->sideA) * ($semiPerimeter - $this->sideB) * ($semiPerimeter - $this->sideC));
+        return sqrt($semiPerimeter * ($semiPerimeter - $this->a) * ($semiPerimeter - $this->b) * ($semiPerimeter - $this->c));
     }
 
     /**
@@ -93,5 +93,15 @@ class Triangle
     public function calculateDiameter(): float
     {
         return max($this->a, $this->b, $this->c);
+    }
+
+     /**
+     * Calculate the circumference
+     *
+     * @return float
+     */
+    public function calculateCircumference(): float
+    {
+        return $this->a + $this->b + $this->c;
     }
 }
