@@ -7,11 +7,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Triangle;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class TriangleController extends AbstractController
 {
     #[Route('/triangle/{a}/{b}/{c}', name: 'triangle_calculation', methods: ['GET'])]
-    public function calculateTriangle(float $a, float $b, float $c): Response
+    public function calculateTriangle(float $a, float $b, float $c, SerializerInterface $serializer): Response
     {
         // Validate if the sides form a valid triangle
         if ($a + $b <= $c || $a + $c <= $b || $b + $c <= $a) {
@@ -26,7 +27,6 @@ class TriangleController extends AbstractController
         $surface = $triangle->calculateSurface();
         $circumference = $triangle->calculateCircumference();
 
-        //response data
         $data = [
             "type" => "triangle",
             "a" => $a,
@@ -36,6 +36,9 @@ class TriangleController extends AbstractController
             "circumference" => round($circumference, 2),
         ];
 
-        return new JsonResponse($data);
+        // Serialize the data into JSON
+        $serializedData = $serializer->serialize($data, 'json');
+
+        return new JsonResponse($serializedData, Response::HTTP_OK, [], true);
     }
 }
