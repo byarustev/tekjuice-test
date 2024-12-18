@@ -32,8 +32,8 @@ class TriangleController extends AbstractController
             "a" => $a,
             "b" => $b,
             "c" => $c,
-            "surface" => $surface,
-            "circumference" => $circumference,
+            "surface" => round($surface, 2),
+            "circumference" => round($circumference, 2),
         ];
 
         return new JsonResponse($data);

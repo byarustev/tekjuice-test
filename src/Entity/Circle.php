@@ -52,4 +52,14 @@ class Circle
     {
         return 2 * $this->radius;
     }
+
+     /**
+     * Calculate the circumference of the circle.
+     *
+     * @return float
+     */
+    public function calculateCircumference(): float
+    {
+        return 2 * pi() * $this->radius;
+    }
 }
