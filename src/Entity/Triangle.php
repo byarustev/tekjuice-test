@@ -62,4 +62,27 @@ class Triangle
 
         return $this;
     }
+
+    /**
+     * Calculate the surface area of the triangle using Heron's formula.
+     *
+     * @return float
+     * @throws \InvalidArgumentException
+     */
+    public function calculateSurface(): float
+    {
+        // Ensure the sides form a valid triangle
+        if ($this->a + $this->b <= $this->c ||
+            $this->a + $this->c <= $this->b ||
+            $this->b + $this->c <= $this->a) {
+            throw new \InvalidArgumentException('The provided sides do not form a valid triangle.');
+        }
+
+        // Semi-perimeter
+        $semiPerimeter = ($this->sideA + $this->sideB + $this->sideC) / 2;
+
+        // Area calculation using Heron's formula
+        return sqrt($semiPerimeter * ($semiPerimeter - $this->sideA) * ($semiPerimeter - $this->sideB) * ($semiPerimeter - $this->sideC));
+    }
+
 }

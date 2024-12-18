@@ -32,4 +32,14 @@ class Circle
 
         return $this;
     }
+
+     /**
+     * Calculate the surface area
+     *
+     * @return float
+     */
+    public function calculateSurface(): float
+    {
+        return pi() * pow($this->radius, 2);
+    }
 }
