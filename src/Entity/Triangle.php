@@ -85,4 +85,13 @@ class Triangle
         return sqrt($semiPerimeter * ($semiPerimeter - $this->sideA) * ($semiPerimeter - $this->sideB) * ($semiPerimeter - $this->sideC));
     }
 
+    /**
+     * Calculate the diameter (longest side) of the triangle.
+     *
+     * @return float
+     */
+    public function calculateDiameter(): float
+    {
+        return max($this->a, $this->b, $this->c);
+    }
 }

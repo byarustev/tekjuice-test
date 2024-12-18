@@ -42,4 +42,14 @@ class Circle
     {
         return pi() * pow($this->radius, 2);
     }
+
+     /**
+     * Calculate the diameter of the circle.
+     *
+     * @return float
+     */
+    public function calculateDiameter(): float
+    {
+        return 2 * $this->radius;
+    }
 }
